@@ -3,25 +3,46 @@ body{
     background: #F3F5FC;
 }
 
-#logo{
+.logo{
     display: block;
     position: relative;
-    padding: 40px 0 0 20px;
-    width: 10%;
+    padding: 40px 20px;
+    width: 175px;
 }
 
+ul{
+    width: 98%;
+}
+
+li{
+    display: inline-block;
+    text-align: center;
+    margin-left: 1.5%;
+}
+
+.elementoUno{
+    padding: 30px 20px;
+    width: 60%;
+    margin-left: 8%;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+
 textarea{
-    font-family: "Gemunu Libre", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    width: 80%;
+    height: 600px;
     color: #0A3871;
     font-size: 35px;
-    width: 50%;
-    height: 100%;
-    background-color: rgb(248,244,252);
+    background-color: #f3f5fc;
     border: none;
     outline: none;
     resize: none;
     cursor: pointer;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 textarea::placeholder{
@@ -29,21 +50,22 @@ textarea::placeholder{
     font-size: 35px;
 }
 
+div{
+    display: inline;
+    margin-right: 56%;
+}
+
 #restriccion{
     display: inline;
     padding: 0px 2px    ;
 }
 
-p{
-    display: inline;
-}
-
-#opciones{
+.opciones{
     padding: 20px;
 }
 
-#opciones input{
-    width: 300px;
+.opciones input{
+    width: 40%;
     padding: 15px;
     font-size: 30px;
     border-radius: 20px;
@@ -51,6 +73,7 @@ p{
     border-style: solid; 
     border-width: 1px; 
     border-color: #0A3871;
+    margin-right: 3.3%;
 }
 
 #botonEncriptar{
@@ -60,4 +83,23 @@ p{
 
 #botonDesencriptar{
     background-color: #D8DFE8;
+}
+
+.elementoDos{
+    width: 30%;
+    vertical-align: left;
+    padding: 8.3% 20px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.elementoDos h1{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.elementoDos p{
+    padding-top: 25px;
 }
