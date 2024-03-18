@@ -1,47 +1,60 @@
-document.getElementById("botonEncriptar").addEventListener("click", encriptador);
-document.getElementById("botonDesencriptar").addEventListener("click", desencriptador);
-document.getElementById("botonCopiar").addEventListener("click", copiarAlPortapapeles);
+let estado = true;
 
-let inputText = document.getElementById("texto-entrada");
-let outputText = document.getElementById("texto-salida");
-
-function encriptador() {
-    let texto = inputText.value;
-    let resultado =texto.replace(/a/g, "ai")
-                        .replace(/e/g, "enter")
-                        .replace(/i/g, "imes")
-                        .replace(/o/g, "ober")
-                        .replace(/u/g, "ufat");
-    asignarTextoElemento("#texto-salida", resultado);
-    toggleVisibilidadCajas();
+function encriptar() {
+    var texto = document.getElementById('texto-entrada').value;
+    var textoEncriptado = texto.replace(/e/g, 'enter')
+                            .replace(/i/g, 'imes')
+                            .replace(/a/g, 'ai')
+                            .replace(/o/g, 'ober')
+                            .replace(/u/g, 'ufat');
+    document.getElementById('texto-salida').textContent = textoEncriptado;
+    if (/[aeiou]/gi.test(texto)) {
+        mostrarSalida();
+    } else if(estado == false){
+        mostrarEntrada();
+    }
 }
 
-function desencriptador() {
-    let texto = inputText.value;
-    let resultado = texto.replace(/ai/g, "a")
-                         .replace(/enter/g, "e")
-                         .replace(/imes/g, "i")
-                         .replace(/ober/g, "o")
-                         .replace(/ufat/g, "u");
-    asignarTextoElemento("#texto-salida", resultado);
-    toggleVisibilidadCajas();
+function desencriptar() {
+    var texto = document.getElementById('texto-entrada').value;
+    var textoDesencriptado = texto.replace(/enter/g, 'e')
+                                .replace(/imes/g, 'i')
+                                .replace(/ai/g, 'a')
+                                .replace(/ober/g, 'o')
+                                .replace(/ufat/g, 'u');
+    document.getElementById('texto-salida').textContent = textoDesencriptado;
+    if (/[aeiou]/gi.test(texto)) {
+        mostrarSalida();
+    } else if(estado == false){
+        mostrarEntrada();
+    }
 }
 
-function asignarTextoElemento(selector, texto) {
-    let elementoHTML = document.querySelector(selector);
-    elementoHTML.textContent = texto; // Usamos textContent en lugar de innerHTML por seguridad y para evitar interpretar el texto como HTML.
+function mostrarEntrada() {
+    document.querySelector('.caja-actual').style.display = 'block';
+    document.querySelector('.presencia-caja').style.display = 'none';
+    estado = true;
 }
 
-function toggleVisibilidadCajas() {
-    let cajaActual = document.querySelector(".caja-actual");
-    let presenciaCaja = document.querySelector(".presencia-caja");
-    cajaActual.style.display = "none"; // Oculta la caja actual
-    presenciaCaja.style.display = "block"; // Muestra la presencia-caja
-
+function mostrarSalida() {
+    document.querySelector('.caja-actual').style.display = 'none';
+    document.querySelector('.presencia-caja').style.display = 'block';
+    estado = false;
 }
 
-function copiarAlPortapapeles() {
-    outputText.select(); // Selecciona el texto de salida
-    document.execCommand("copy"); // Copia el texto seleccionado al portapapeles
-    alert("Texto copiado al portapapeles");
-}
+document.getElementById('texto-entrada').addEventListener('input', function() {
+    const valorTextarea = this.value;
+    const condicion = /[a-z !]/g.test(valorTextarea);
+    document.getElementById('botonEncriptar').disabled = !condicion;
+    document.getElementById('botonDesencriptar').disabled = !condicion;
+});
+
+document.getElementById('botonCopiar').addEventListener('click', function() {
+    var texto = document.getElementById('texto-salida').textContent;
+    navigator.clipboard.writeText(texto);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('botonEncriptar').addEventListener('click', encriptar);
+    document.getElementById('botonDesencriptar').addEventListener('click', desencriptar);
+});
