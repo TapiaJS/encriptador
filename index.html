@@ -7,37 +7,34 @@
 
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <main> 
-        <img src="imagenes/Logo.svg" alt="Logo de la compañía Alura" id="logo">
+        <img src="imagenes/Logo.svg" alt="Logo de la compañía Alura" class="logo">
 
-        <section class="entrada">
-            <textarea id="texto" placeholder="Ingresa el texto aquí" required></textarea>
-            <img src="imagenes/Group.svg" alt="alerta" id="restriccion">
-            <p>Sólo letras minúsculas y sin acentos</p>
-            <form id="opciones">
-                <input type="submit" value="Encriptar" id="botonEncriptar">
-                <input type="submit" value="Desencriptar" id="botonDesencriptar">
-            </form>
-        </section>
+        <ul>
+            <li class="elementoUno">
+                <textarea class="texto" placeholder="Ingresa el texto aquí" required></textarea>
+                <div>
+                    <img src="imagenes/Group.svg" alt="alerta" class="aviso">
+                    <p id="restriccion">Sólo letras minúsculas y sin acentos</p>
+                </div>
+                <form class="opciones">
+                    <input type="submit" value="Encriptar" id="botonEncriptar">
+                    <input type="submit" value="Desencriptar" id="botonDesencriptar">
+                </form>
+            </li>
 
-        <section class="salida">
-            <img src="imagenes/Muñeco.svg" alt="muñeco">
-            
-            <div>
+            <li class="elementoDos">
+                <img src="imagenes/Muñeco.svg" alt="muñeco" class="imagenComplemento">
                 <h1>Ningún mensaje fue encontrado</h1>
                 <p>Ingresa el texto que deseas encriptar o desencriptar</p>
-            </div>
-            
-            <div>
-                <p class="resultado"></p>
-                <input type="submit" value="Copiar">
-            </div>
-        </section>
+                <input type="submit" value="Copiar" id="botonCopiar">
+            </li>
+        </ul>
+
     </main>
     <script src="encriptador.js"></script>
 </body>
